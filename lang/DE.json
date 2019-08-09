@@ -134,5 +134,7 @@
   "chord_finder" : "Akkordsuche",
   "reverse_chord_finder" : "Umgekehrte Akkordsuche",
   "about_credits" : "Über diese Seite & Dank...",
-  "confirm_delete_song" : "Soll dieser Song wirklich unwiderruflich gelöscht werden?"
+  "confirm_delete_song" : "Soll dieser Song wirklich unwiderruflich gelöscht werden?",
+  "chordsHovering" : "Chords on mouse hovering",
+  "chordsHovering_descr" : "Display chords diagram on mouse hovering"
 }
