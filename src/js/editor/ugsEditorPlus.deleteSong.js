@@ -103,7 +103,7 @@ ugsEditorPlus.deleteSong = (function() {
 	var doAjaxOk = function(data) {
 		if (!data.HasErrors)
     {
-      document.location.href = '/';
+      document.location.href = '<?php echo Config::Subdirectory?>';
     }
 	};
 
