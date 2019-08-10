@@ -77,4 +77,7 @@ For nicer url you can enable mod_rewrite in the config.php file like this :
 
     const UseModRewrite = true;
 
-Note : There is currently a bug (issue #37) if your install isn't in the root directory...
+If you have installed UkeGeeks in a subdirectory don't forget to update the _RewriteBase_ in the .htaccess file to the same value you set in the config.php, e.g.
+
+    RewriteBase /hobbies/ukulele/
+
