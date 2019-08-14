@@ -832,13 +832,13 @@ ugsEditorPlus.styles = (function() {
 	};
 
 	var _sheet = null;
-	
+
 	_public.getSheet = function(title) {
 		_sheet = _getSheet(title);
 		_public.Rules = _getRules();
 		return this;
 	};
-	
+
 	var _getSheet = function(title){
 		for (var i = 0; i < document.styleSheets.length; i++){
 			if (document.styleSheets[i].title == title){
@@ -847,14 +847,14 @@ ugsEditorPlus.styles = (function() {
 		}
 		return null;
 	};
-	
+
 	var _getRules = function() {
 		if (_sheet == null){
 			return [];
 		}
 		return _sheet.cssRules ? _sheet.cssRules : _sheet.rules;
 	};
-	
+
 	_public.find = function(selector) {
 		selector = selector.toLowerCase();
 		for (var i = 0; i < _public.Rules.length; i++) {
@@ -2334,7 +2334,7 @@ ugsEditorPlus.deleteSong = (function() {
 	var doAjaxOk = function(data) {
 		if (!data.HasErrors)
     {
-      document.location.href = '/';
+      document.location.href = './';
     }
 	};
 
@@ -2360,7 +2360,7 @@ ugsEditorPlus.reindex = (function() {
 	_public.init = function(Uri) {
 
 		$('#reindexBtn').click(function(e) {
-      if (confirm(ugs_il8n.reindex_confirm)) 
+      if (confirm(ugs_il8n.reindex_confirm))
       {
         window.location.href = Uri;
       }
@@ -2888,7 +2888,7 @@ ugsEditorPlus.stickyChords = (function() {
   }
 
 	// ------------------------
-	// return public interface 
+	// return public interface
 	// ------------------------
 	return _public;
 
@@ -2981,7 +2981,7 @@ ugsEditorPlus.autoscroll = (function() {
   }
 
 	// ------------------------
-	// return public interface 
+	// return public interface
 	// ------------------------
 	return _public;
 
@@ -3012,7 +3012,7 @@ ugsEditorPlus.hoverChords = (function() {
       var chordName = e.currentTarget.innerText;
       var $diagram = $('#ukeChordsCanvas [data-chordname=' + chordName + ']')
       var $chordsHoveringCanvas = $('#chordsHoveringCanvas');
-    
+
       cloneCanvas($diagram[0], $chordsHoveringCanvas[0]);
 
       // Needs to be set BEFORE changing top/left
@@ -3050,7 +3050,7 @@ ugsEditorPlus.hoverChords = (function() {
   }
 
 	// ------------------------
-	// return public interface 
+	// return public interface
 	// ------------------------
 	return _public;
 
