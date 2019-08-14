@@ -77,15 +77,17 @@ The Songbook assumes that it's installed in your web server's root directory, bu
 By default this is set to the root:
 
     const Subdirectory = '/';
-    
+
 You can just modify it to whatever you wish (include leading and trailing last forward slashes "/")
 
     const Subdirectory = '/hobbies/ukulele/';
- 
+
 #### Optional : enabling URL rewriting (apache mod_rewrite)
 
 For nicer url you can enable mod_rewrite in the config.php file like this :
 
     const UseModRewrite = true;
 
-Note : There is currently a bug (issue #37) if your install isn't in the root directory...
+If you installed UkeGeeks to a subdirectory don't forget to set RewriteBase accordingly:
+
+    RewriteBase /hobbies/ukulele
