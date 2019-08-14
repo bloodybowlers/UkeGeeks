@@ -8,7 +8,7 @@ DirectoryIndex  music.php index.php index.htm index.html
 Options All -Indexes
 
 # Serve the songindex for "file not found" error
-ErrorDocument 404 /music.php?action=NotFound404
+ErrorDocument 404 music.php?action=NotFound404
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
