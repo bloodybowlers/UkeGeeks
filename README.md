@@ -55,7 +55,7 @@ _______________________________________________________
 # Installation
 
 Nothing special here, you need Apache / Php.  
-Mod_rewrite is really recommanded too (for prettier url).
+Mod_rewrite is really recommended too (for prettier url).
 
 Just download the source and unzip-it (or use git clone) on your hosting space.
 
@@ -69,7 +69,7 @@ If you want to change this, read below (installing in a different directory).
 
 And that's it, you should be good to go. Start adding songs :)
 
-### Optionnal
+### Optional
 
 #### Optional : installing in a different directory
 The Songbook assumes that it's installed in your web server's root directory, but you might want it in a subdirectory. Perhaps you want the URLs to be "mysite.com/hobbies/ukulele/music.php", for example. Excellent! To do this we just need to open config.php and change the subdirectory.
@@ -88,6 +88,6 @@ For nicer url you can enable mod_rewrite in the config.php file like this :
 
     const UseModRewrite = true;
 
-If you installed UkeGeeks to a subdirectory don't forget to set RewriteBase accordingly:
+Also rename **htaccess.txt** to **.htaccess** (or copy the content into an existing .htaccess) - and if you installed UkeGeeks to a subdirectory don't forget to set _RewriteBase_ in .htaccess accordingly:
 
     RewriteBase /hobbies/ukulele
