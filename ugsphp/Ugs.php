@@ -79,7 +79,7 @@ class Ugs{
 
 		if ($action == Actions::Logout){
 			$login->Logout();
-			header('Location: ' . self::MakeUri(Actions::Login));
+			header('Location: ' . self::MakeUri(Actions::Songbook));
 			return  $login->GetUser();
 		}
 
