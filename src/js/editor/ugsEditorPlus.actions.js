@@ -332,11 +332,13 @@ ugsEditorPlus.actions = (function() {
 	 */
 	var doTuning = function(value){
 		var tuning = ukeGeeks.definitions.instrument.standardUke,
-			msg = 'Standard <strong>GCEA</strong> Standard Ukulele';
+      msg = '&mdash; GCEA &mdash;';
+			//msg = 'Standard <strong>GCEA</strong> Standard Ukulele';
 
 		if (value == 'baritone') {
 			tuning = ukeGeeks.definitions.instrument.baritoneUke;
-			msg = 'Standard <strong>DGBE</strong> Baritone Ukulele';
+      msg = '&mdash; DGBE &mdash;';
+			//msg = 'Standard <strong>DGBE</strong> Baritone Ukulele';
 		}
 
 		$('#footTuningInfo').html(msg);
