@@ -1,19 +1,32 @@
 <?php
 
+// build the individual list items
+function MakeRowHtml($song){
+  $html = '  <a href="'.$song->Uri.'"'.(Config::openSongInNewTab?' target=_blank':'').'><span class="SongListSong" data-searchable="'.$song->Artist.' - '.$song->Title.'">'.$song->Title.'</span></a>';
+  if ((strlen($song->Subtitle) > 0) || (strlen($song->Album) > 0)){
+    $html .= '<em class="SongListSubtitle">';
+    if (strlen($song->Subtitle) > 0){ $html .= $song->Subtitle; }
+    if ((strlen($song->Subtitle) > 0) && (strlen($song->Album) > 0)){ $html .= ' &middot; '; }
+    if (strlen($song->Album) > 0){ $html .= $song->Album; }
+    $html .= '</em>';
+  }
+	return $html;
+}
+
 // Sort by ARTIST and then by TITLE
 function strCompareArtist($obj1, $obj2)
-{ 
+{
     if(strtoupper($obj1->Artist) == strtoupper($obj2->Artist))
       return strcasecmp($obj1->Title, $obj2->Title);
     else
       return strcasecmp($obj1->Artist, $obj2->Artist);
-} 
+}
 
 // Sort by title
 function strCompareTitle($obj1, $obj2)
-{ 
+{
   return strcasecmp($obj1->Title, $obj2->Title);
-} 
+}
 
 // Build a songlist, alphabetically ordered, by ARTIST
 function BuildSongListByArtist($SongList)
@@ -43,12 +56,9 @@ function BuildSongListByArtist($SongList)
         echo '<div class="SongListArtist">'.$currentArtist.'<ul>';
       }
 
-      echo '<li>';
-      echo '  <a href="'.$song->Uri.'"'.(Config::openSongInNewTab?' target=_blank':'').'><span class="SongListSong" data-searchable="'.$song->Artist.' - '.$song->Title.'">'.$song->Title.'</span></a>';
-      echo '</li>';
+      echo '<li>' . MakeRowHtml($song) . '</li>';
     }
 }
-
 
 // Build a songlist, alphabetically ordered, by TITLE
 function BuildSongListByTitle($SongList)
@@ -71,9 +81,7 @@ function BuildSongListByTitle($SongList)
         echo "<div class='SongListLetter'>".strtoupper($currentLetter)."</div><ol>";
       }
 
-      echo '<li>';
-      echo '  <a href="'.$song->Uri.'"'.(Config::openSongInNewTab?' target=_blank':'').'><span class="SongListSong" data-searchable="'.$song->Artist.' - '.$song->Title.'">'.$song->Title.'</span></a>';
-      echo '</li>';
+      echo '<li>' . MakeRowHtml($song) . '</li>';
     }
 }
 
@@ -105,9 +113,7 @@ function BuildSongListByCategory($SongList)
         {
           if(in_array(strtolower($category), array_map('strtolower', $s->Category)))
           {
-            echo '<li>';
-            echo '  <a href="'.$s->Uri.'"'.(Config::openSongInNewTab?' target=_blank':'').'><span class="SongListSong" data-searchable="'.$s->Artist.' - '.$s->Title.'">'.$s->Title.'</span></a>';
-            echo '</li>';
+            echo '<li>' . MakeRowHtml($s) . '</li>';
           }
         }
         echo '</ul>';
