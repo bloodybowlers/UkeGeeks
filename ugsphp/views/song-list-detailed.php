@@ -1,9 +1,23 @@
 <?php
 
-// build the individual list items
+// build the individual list items incl subtitle, artist, album
 function MakeRowHtml($song){
   $html = '  <a href="'.$song->Uri.'"'.(Config::openSongInNewTab?' target=_blank':'').'><span class="SongListSong" data-searchable="'.$song->Artist.' - '.$song->Title.'">'.$song->Title.'</span></a>';
-  if ((strlen($song->Subtitle) > 0) || (strlen($song->Album) > 0)){
+  if ((strlen($song->Subtitle) > 0) || (strlen($song->Artist) > 0) || (strlen($song->Album) > 0)){
+    $html .= '<em class="SongListSubtitle">';
+    if (strlen($song->Subtitle) > 0){ $html .= $song->Subtitle; }
+    if ((strlen($song->Subtitle) > 0) && (strlen($song->Artist) > 0)){ $html .= ' &bull; '; }
+    if (strlen($song->Artist) > 0){ $html .= $song->Artist; }
+    if (((strlen($song->Subtitle) > 0) || (strlen($song->Artist) > 0)) && (strlen($song->Album) > 0)){ $html .= ' &bull; '; }
+    if (strlen($song->Album) > 0){ $html .= $song->Album; }
+    $html .= '</em>';
+  }
+	return $html;
+}
+// build the individual list items without artist
+function MakeArtistRowHtml($song){
+  $html = '  <a href="'.$song->Uri.'"'.(Config::openSongInNewTab?' target=_blank':'').'><span class="SongListSong" data-searchable="'.$song->Artist.' - '.$song->Title.'">'.$song->Title.'</span></a>';
+  if ((strlen($song->Subtitle) > 0) || (strlen($song->Artist) > 0) || (strlen($song->Album) > 0)){
     $html .= '<em class="SongListSubtitle">';
     if (strlen($song->Subtitle) > 0){ $html .= $song->Subtitle; }
     if ((strlen($song->Subtitle) > 0) && (strlen($song->Album) > 0)){ $html .= ' &bull; '; }
@@ -56,7 +70,7 @@ function BuildSongListByArtist($SongList)
         echo '<div class="SongListArtist">'.$currentArtist.'<ul>';
       }
 
-      echo '<li>' . MakeRowHtml($song) . '</li>';
+      echo '<li>' . MakeArtistRowHtml($song) . '</li>';
     }
 }
 
