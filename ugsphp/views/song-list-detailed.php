@@ -6,7 +6,7 @@ function MakeRowHtml($song){
   if ((strlen($song->Subtitle) > 0) || (strlen($song->Album) > 0)){
     $html .= '<em class="SongListSubtitle">';
     if (strlen($song->Subtitle) > 0){ $html .= $song->Subtitle; }
-    if ((strlen($song->Subtitle) > 0) && (strlen($song->Album) > 0)){ $html .= ' &middot; '; }
+    if ((strlen($song->Subtitle) > 0) && (strlen($song->Album) > 0)){ $html .= ' &bull; '; }
     if (strlen($song->Album) > 0){ $html .= $song->Album; }
     $html .= '</em>';
   }
