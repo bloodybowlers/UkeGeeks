@@ -50,28 +50,39 @@ function BuildSongListByArtist($SongList)
     $currentLetter = '';
     $songLetter = '';
     $currentArtist = '';
+    $initList = true;
     foreach($SongList as $song)
     {
       $songLetter = substr($song->Artist, 0, 1);
 
-      if(strtoupper($currentLetter) != strtoupper($songLetter))
+      if(strtoupper($currentLetter) != strtoupper($songLetter) || $initList == true)
       {
-        $currentLetter = $songLetter;
-        echo "<div class='SongListLetter'>".strtoupper($currentLetter)."</div>";
-      }
-
-      if(strtoupper($song->Artist) != strtoupper($currentArtist))
-      {
-        if($currentArtist != '')
+        $newLetter = true;
+        if ($currentArtist != $song->Artist)
         {
           echo '</ul></div>';
         }
+        $currentLetter = $songLetter;
+        echo '<div class="SongListLetter">'.strtoupper($currentLetter).'</div>';
+      }
+
+      if(strtoupper($song->Artist) != strtoupper($currentArtist) || $initList == true)
+      {
+        if($currentArtist != '' && $newLetter == false)
+        {
+          echo '</ul></div>';
+        }
+        $newLetter = false;
         $currentArtist = $song->Artist;
         echo '<div class="SongListArtist">'.$currentArtist.'<ul>';
       }
 
-      echo '<li>' . MakeArtistRowHtml($song) . '</li>';
+      echo '<li>';
+      echo '  <a href="'.$song->Uri.'"'.(Config::openSongInNewTab?' target=_blank':'').'><span class="SongListSong" data-searchable="'.$song->Artist.' - '.$song->Title.'">'.$song->Title.'</span></a>';
+      echo '</li>';
+      $initList = false;
     }
+  echo '</ul></div>'; //close the last artist's song list
 }
 
 // Build a songlist, alphabetically ordered, by TITLE
