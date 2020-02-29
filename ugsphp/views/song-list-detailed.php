@@ -27,12 +27,6 @@ function BuildSongListByArtist($SongList)
     {
       $songLetter = substr($song->Artist, 0, 1);
 
-      if(strtoupper($currentLetter) != strtoupper($songLetter))
-      {
-        $currentLetter = $songLetter;
-        echo "<div class='SongListLetter'>".strtoupper($currentLetter)."</div>";
-      }
-
       if(strtoupper($song->Artist) != strtoupper($currentArtist))
       {
         if($currentArtist != '')
@@ -41,6 +35,12 @@ function BuildSongListByArtist($SongList)
         }
         $currentArtist = $song->Artist;
         echo '<div class="SongListArtist">'.$currentArtist.'<ul>';
+      }
+
+      if(strtoupper($currentLetter) != strtoupper($songLetter))
+      {
+        $currentLetter = $songLetter;
+        echo "<div class='SongListLetter'>".strtoupper($currentLetter)."</div>";
       }
 
       echo '<li>';
