@@ -85,7 +85,11 @@ a {
 .SongListTitle {
   text-align:left;
 }
-
+.SongListSubtitle {
+  font-style: italic;
+  font-size: 0.8em !important;
+  letter-spacing: normal;
+}
 .SongListLetter {
   font-weight: bold;
   margin: 35px 0 10px 0;
